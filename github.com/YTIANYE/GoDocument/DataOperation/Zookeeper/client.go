@@ -11,7 +11,8 @@ import (
 	"github.com/samuel/go-zookeeper/zk"
 )
 
-func checkError(err error) {
+
+func clientcheckError(err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -36,24 +37,24 @@ func startClient() {
 
 	fmt.Println("connect host: " + serverHost)
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", serverHost)
-	checkError(err)
+	clientcheckError(err)
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
-	checkError(err)
+	clientcheckError(err)
 	defer conn.Close()
 
 	// 获取server发送的时间后断开
 	_, err = conn.Write([]byte("timestamp"))
-	checkError(err)
+	clientcheckError(err)
 
 	result, err := ioutil.ReadAll(conn)
-	checkError(err)
+	clientcheckError(err)
 	fmt.Println(string(result))
 
 	return
 }
 
 func getServerHost() (host string, err error) {
-	conn, err := GetConnect()
+	conn, err := clientGetConnect()
 	if err != nil {
 		fmt.Printf(" connect zk error: %s \n ", err)
 		return
@@ -78,7 +79,7 @@ func getServerHost() (host string, err error) {
 	return
 }
 
-func GetConnect() (conn *zk.Conn, err error) {
+func clientGetConnect() (conn *zk.Conn, err error) {
 	zkList := []string{"localhost:2181"}
 	conn, _, err = zk.Connect(zkList, 10*time.Second)
 	if err != nil {
