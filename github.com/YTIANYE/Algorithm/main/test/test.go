@@ -17,8 +17,8 @@ func testScan() {
 /*
 测试无穷
 */
-func testInf(){
-	//浮点型
+func testInf() {
+	// 浮点型
 	fmt.Println(math.Inf(1))
 	fmt.Println(math.Inf(-1))
 	// 无符号整型uint
@@ -31,6 +31,14 @@ func testInf(){
 	fmt.Println(INT_MIN, INT_MAX)
 }
 
+/*测试字符的类型*/
+func testchar() {
+	s := "abc"
+	for _, ch := range s {
+		fmt.Printf("%T\n", ch) // 单个字符类型 int32
+	}
+}
+
 func main() {
-	testInf()
+	testchar()
 }
