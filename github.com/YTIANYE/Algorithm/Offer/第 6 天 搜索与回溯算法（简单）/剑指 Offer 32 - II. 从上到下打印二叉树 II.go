@@ -27,7 +27,7 @@ import "fmt"
 // 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
 // 内存消耗：2.8 MB, 在所有 Go 提交中击败了23.39%的用户
 
-func levelOrder(root *TreeNode) [][]int {
+func levelOrder2(root *TreeNode) [][]int {
 	var result [][]int
 	var queue []*TreeNode
 	if root == nil {
