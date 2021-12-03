@@ -1,6 +1,7 @@
 package main
 
 import (
+	"awesomeProject1/github.com/YTIANYE/Algorithm/main/structure/LinkList"
 	"fmt"
 )
 
@@ -8,7 +9,7 @@ import (
 // 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
 // 内存消耗：3.1 MB, 在所有 Go 提交中击败了90.96%的用户
 
-func reversePrint(head *ListNode) []int {
+func reversePrint(head *LinkList.ListNode) []int {
 	var nums []int
 
 	p := head
@@ -27,7 +28,7 @@ func reversePrint(head *ListNode) []int {
 
 func main() {
 	nums := []int{1,2,3}
-	list := CreatList(nums)
-	PrintList(list)
+	list := LinkList.CreatList(nums)
+	LinkList.PrintList(list)
 	fmt.Println(reversePrint(list))
 }

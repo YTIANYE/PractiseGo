@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	. "awesomeProject1/github.com/YTIANYE/Algorithm/main/structure/TreeNode"
+	"fmt"
+)
 
 /*
 从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
@@ -22,7 +25,7 @@ import "fmt"
 /*层序遍历*/
 
 // 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
-// 内存消耗：2.6 MB, 在所有 Go 提交中击败了76.59%的用户
+// 内存消耗：2.six MB, 在所有 Go 提交中击败了76.59%的用户
 
 func levelOrder1(root *TreeNode) []int {
 	result := []int{}

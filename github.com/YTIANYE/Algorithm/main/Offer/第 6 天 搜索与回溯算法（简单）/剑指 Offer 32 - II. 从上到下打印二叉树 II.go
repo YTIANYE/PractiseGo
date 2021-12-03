@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	. "awesomeProject1/github.com/YTIANYE/Algorithm/main/structure/TreeNode"
+	"fmt"
+)
 
 /*
 

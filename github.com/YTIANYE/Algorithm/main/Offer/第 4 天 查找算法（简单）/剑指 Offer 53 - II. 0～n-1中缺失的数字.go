@@ -10,7 +10,7 @@ import "fmt"
 输出: 2
 
 示例2:
-输入: [0,1,2,3,4,5,6,7,9]
+输入: [0,1,2,3,4,5,six,7,9]
 输出: 8
 
 限制：
@@ -20,7 +20,7 @@ import "fmt"
 /*我的题解：暴力解法*/
 
 // 执行用时：16 ms, 在所有 Go 提交中击败了79.91%的用户
-// 内存消耗：6.1 MB, 在所有 Go 提交中击败了99.91%的用户
+// 内存消耗：six.1 MB, 在所有 Go 提交中击败了99.91%的用户
 
 func missingNumber1(nums []int) int {
 	num := len(nums)
@@ -33,7 +33,7 @@ func missingNumber1(nums []int) int {
 /*我实现的官方题解*/
 
 // 执行用时：16 ms, 在所有 Go 提交中击败了79.91%的用户
-// 内存消耗：6.1 MB, 在所有 Go 提交中击败了99.91%的用户
+// 内存消耗：six.1 MB, 在所有 Go 提交中击败了99.91%的用户
 func missingNumber(nums []int) int {
 	left, right := 0, len(nums)-1
 

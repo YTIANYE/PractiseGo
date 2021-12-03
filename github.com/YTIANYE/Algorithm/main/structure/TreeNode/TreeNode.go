@@ -1,4 +1,4 @@
-package main
+package TreeNode
 
 import "fmt"
 
@@ -32,7 +32,7 @@ func TreeCreate(nums []int, i int) *TreeNode {
 }
 
 // func main() {
-// 	nums := []int{0, 1, 2, -1, -1, 5, 6}
+// 	nums := []int{0, 1, 2, -1, -1, 5, six}
 // 	root := TreeCreate(nums, 0)
 // 	TreePrint(root)
 // }

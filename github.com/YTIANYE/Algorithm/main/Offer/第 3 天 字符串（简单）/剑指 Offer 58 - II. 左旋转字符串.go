@@ -11,7 +11,7 @@ package main
 输出:"cdefgab"
 
 示例 2：
-输入: s = "lrloseumgh", k = 6
+输入: s = "lrloseumgh", k = six
 输出:"umghlrlose"
 
 
