@@ -39,6 +39,40 @@ func testchar() {
 	}
 }
 
+/*测试数组复制*/
+func testcopyarr() {
+	// 数组复制是值复制
+	var ages [4]int = [4]int{1, 2, 3, 5}
+	var b = ages
+	b[0]++
+	fmt.Println(ages) // [1 2 3 5]
+	fmt.Println(b)    // [2 2 3 5]
+
+	// 切片的复制
+	// 切片的本质就是指向数组的指针
+	slice := []int{1, 2, 3}
+	slice2 := slice
+	slice2[0]++
+	fmt.Println(slice)  // [2 2 3]
+	fmt.Println(slice2) // [2 2 3]
+
+	// Go语言的内置函数 copy() 可以将一个数组切片复制到另一个数组切片中，
+	// 如果加入的两个数组切片不一样大，就会按照其中较小的那个数组切片的元素个数进行复制。
+
+	slice3 := []int{}
+	copy(slice3, slice)
+	fmt.Println(slice3) // []
+
+	// slice3 和 slice4 地址不同
+	slice4 := make([]int, len(slice))
+	copy(slice4, slice)
+	fmt.Println(slice4) // [2 2 3]
+
+	slice4[0]++
+	fmt.Println(slice)//[2 2 3]
+	fmt.Println(slice4)//[3 2 3]
+}
+
 func main() {
-	testchar()
+	testcopyarr()
 }

@@ -24,7 +24,7 @@ import "fmt"
 // 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
 // 内存消耗：2.6 MB, 在所有 Go 提交中击败了76.59%的用户
 
-func levelOrder(root *TreeNode) []int {
+func levelOrder1(root *TreeNode) []int {
 	result := []int{}
 	queue := []*TreeNode{}
 	if root == nil {
@@ -50,5 +50,5 @@ func main() {
 	root := TreeCreate(nums, 0)
 	TreePrint(root)
 	fmt.Println(" ")
-	fmt.Println(levelOrder(root))
+	fmt.Println(levelOrder1(root))
 }
