@@ -73,6 +73,22 @@ func testcopyarr() {
 	fmt.Println(slice4)//[3 2 3]
 }
 
+/*测试切片中添加nil*/
+func testslicenil(){
+	nums := []int{1,2,3}
+	numsp :=[]*int{}
+	for _,v := range nums{
+		numsp = append(numsp, &v)
+	}
+	numsp = append(numsp, nil)
+	for _,v := range nums{
+		numsp = append(numsp, &v)
+	}
+	// 地址可以添加 nil
+	// int不可以
+	fmt.Println(numsp)//[0xc00000a088 0xc00000a088 0xc00000a088 <nil> 0xc00000a0a0 0xc00000a0a0 0xc00000a0a0]
+}
+
 func main() {
-	testcopyarr()
+	testslicenil()
 }
