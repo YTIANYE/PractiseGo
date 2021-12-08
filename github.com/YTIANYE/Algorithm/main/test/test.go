@@ -69,26 +69,35 @@ func testcopyarr() {
 	fmt.Println(slice4) // [2 2 3]
 
 	slice4[0]++
-	fmt.Println(slice)//[2 2 3]
-	fmt.Println(slice4)//[3 2 3]
+	fmt.Println(slice)  // [2 2 3]
+	fmt.Println(slice4) // [3 2 3]
 }
 
 /*测试切片中添加nil*/
-func testslicenil(){
-	nums := []int{1,2,3}
-	numsp :=[]*int{}
-	for _,v := range nums{
+func testslicenil() {
+	nums := []int{1, 2, 3}
+	numsp := []*int{}
+	for _, v := range nums {
 		numsp = append(numsp, &v)
 	}
 	numsp = append(numsp, nil)
-	for _,v := range nums{
+	for _, v := range nums {
 		numsp = append(numsp, &v)
 	}
 	// 地址可以添加 nil
 	// int不可以
-	fmt.Println(numsp)//[0xc00000a088 0xc00000a088 0xc00000a088 <nil> 0xc00000a0a0 0xc00000a0a0 0xc00000a0a0]
+	fmt.Println(numsp) // [0xc00000a088 0xc00000a088 0xc00000a088 <nil> 0xc00000a0a0 0xc00000a0a0 0xc00000a0a0]
+}
+
+func testmap() {
+	set := make(map[string]int)
+	s := "abcd"
+	for _, str := range s {
+		set[string(str)] += 1
+	}
+	fmt.Println(set["e"]) // map中找不到时默认返回0
 }
 
 func main() {
-	testslicenil()
+	testmap()
 }
