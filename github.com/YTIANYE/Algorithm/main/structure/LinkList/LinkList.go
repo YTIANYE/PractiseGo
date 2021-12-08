@@ -21,10 +21,12 @@ func CreatList(nums []int) *ListNode {
 
 func PrintList(head *ListNode){
 	p := head
+	result := []int{}
 	for p != nil{
-		fmt.Println(p.Val)
+		result = append(result, p.Val)
 		p = p.Next
 	}
+	fmt.Println(result)
 }
 
 // func main(){

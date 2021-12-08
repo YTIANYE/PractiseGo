@@ -27,9 +27,9 @@ func maxSubArray1(nums []int) int {
 		sum := 0
 		for j := i; j >= 0; j-- {
 			sum += nums[j]
-			maxsumcur = max(sum, maxsumcur)
+			maxsumcur = max2(sum, maxsumcur)
 		}
-		maxsum = max(maxsumcur, maxsum)
+		maxsum = max2(maxsumcur, maxsum)
 	}
 	return maxsum
 }
@@ -38,13 +38,13 @@ func maxSubArray(nums []int) int {
 	maxpre := 0
 	maxsum := -100
 	for _, num := range nums {
-		maxpre = max(num, maxpre+num) // 以当前值做结尾的子数组的最大和 取决于 前一个值做结尾的子数组的最大和 和当前值
-		maxsum = max(maxsum, maxpre)
+		maxpre = max2(num, maxpre+num) // 以当前值做结尾的子数组的最大和 取决于 前一个值做结尾的子数组的最大和 和当前值
+		maxsum = max2(maxsum, maxpre)
 	}
 	return maxsum
 }
 
-func max(a int, b int) int {
+func max2(a int, b int) int {
 	if a > b {
 		return a
 	} else {
