@@ -31,23 +31,6 @@ package main
 
 import . "awesomeProject1/github.com/YTIANYE/Algorithm/main/structure/LinkList"
 
-/*我的题解*/
-/*执行用时：32 ms, 在所有 Go 提交中击败了91.64%的用户
-内存消耗：7.5 MB, 在所有 Go 提交中击败了93.29%的用户*/
-
-func getIntersectionNode1(headA, headB *ListNode) *ListNode {
-	aval := make(map[*ListNode]int)
-	for p := headA; p != nil; p = p.Next {
-		aval[p]++
-	}
-
-	for q := headB; q != nil; q = q.Next {
-		if aval[q] == 1 {
-			return q
-		}
-	}
-	return nil
-}
 
 /*我实现的精选题解*/
 /*
@@ -74,4 +57,24 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 		}
 	}
 	return p
+}
+
+
+
+/*我的题解*/
+/*执行用时：32 ms, 在所有 Go 提交中击败了91.64%的用户
+内存消耗：7.5 MB, 在所有 Go 提交中击败了93.29%的用户*/
+
+func getIntersectionNode1(headA, headB *ListNode) *ListNode {
+	aval := make(map[*ListNode]int)
+	for p := headA; p != nil; p = p.Next {
+		aval[p]++
+	}
+
+	for q := headB; q != nil; q = q.Next {
+		if aval[q] == 1 {
+			return q
+		}
+	}
+	return nil
 }
