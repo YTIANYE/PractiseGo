@@ -56,7 +56,7 @@ func isparam(num int) bool {
 func translateNum(num int) int {
 	str := strconv.Itoa(num) // int转换成字符串
 	pp, p, cur := 0, 0, 1
-	for i, _ := range str {
+	for i := range str {
 		pp, p, cur = p, cur, 0
 		cur += p
 		if i == 0 {

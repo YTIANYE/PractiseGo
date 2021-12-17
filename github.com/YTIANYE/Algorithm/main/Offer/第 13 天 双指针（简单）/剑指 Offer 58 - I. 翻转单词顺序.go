@@ -53,10 +53,10 @@ func reverseWords1(s string) string {
 				j = i
 				tag = true
 				if i == len(s)-1 { // s = "a"的情况
-					strs = s[j:len(s)] + " " + strs
+					strs = s[j:] + " " + strs
 				}
 			} else if i == len(s)-1 { // 确定了j的位置，i到达s最后一个字符
-				strs = s[j:len(s)] + " " + strs
+				strs = s[j:] + " " + strs
 			}
 		}
 	}

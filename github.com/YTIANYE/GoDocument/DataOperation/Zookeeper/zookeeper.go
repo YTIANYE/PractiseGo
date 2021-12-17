@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	zk "github.com/samuel/go-zookeeper/zk"
+	"github.com/samuel/go-zookeeper/zk"
 )
 
 /**

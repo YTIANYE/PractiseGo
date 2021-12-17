@@ -23,7 +23,7 @@ func maxSubArray1(nums []int) int {
 	maxsumcur := -100
 	// maxsumpre := 0
 	maxsum := -100
-	for i, _ := range nums {
+	for i := range nums {
 		sum := 0
 		for j := i; j >= 0; j-- {
 			sum += nums[j]
