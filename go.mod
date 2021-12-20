@@ -16,4 +16,5 @@ require (
 	github.com/streadway/amqp v1.0.0 // indirect
 	// go.etcd.io/etcd v3.3.25+incompatible
 	go.uber.org/zap v1.19.1 // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
 )

@@ -1,0 +1,42 @@
+// 默认是proto2
+syntax = "proto3";
+
+// 指定所在包名
+package PB;
+
+option go_package ="../pb";// 避免错误 unable to determine Go import path for "myproto.proto"
+
+// 定义枚举类型
+enum Week{
+  Monday = 0;//peoto3中，枚举值必须是从0开始，不能设置成1开始
+  Tuesday = 1;
+}
+
+// 定义消息体
+message Student{
+  int32 age = 1;//可以不从1开始，但是不能重复。19000-19999范围的数字不能用，系统保留。
+  string name = 2;
+  People p = 3;
+  repeated int32 score = 4;//数组
+  // 枚举
+  Week w = 5;
+  // 联合体
+  oneof data{
+    string teacher = 6;//不能写5 或者 3,联合体是只能取其中的一个，编号唯一，不能重复
+    string class = 7;
+  }
+}
+
+// 消息体支持嵌套
+message People{
+  int32 weight = 1;
+}
+
+// 添加 rpc 服务
+// 编译期间不编译服务，
+// 使用 protoc --go_out=plugins=grpc:./ *.proto
+// 生成的代码在矩阵之后的部分
+service service_say{
+  rpc Say(People) returns (Student);// 注意returns 是关键字
+}
+
