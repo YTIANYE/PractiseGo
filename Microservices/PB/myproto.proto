@@ -1,10 +1,10 @@
 // 默认是proto2
-syntax = "proto3";
+syntax = "proto3";//正在使用`proto3`语法
 
 // 指定所在包名
 package PB;
 
-option go_package ="../pb";// 避免错误 unable to determine Go import path for "myproto.proto"
+option go_package = "../pb";// 避免错误 unable to determine Go import path for "myproto.proto"
 
 // 定义枚举类型
 enum Week{

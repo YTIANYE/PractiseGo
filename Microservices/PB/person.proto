@@ -1,0 +1,16 @@
+syntax = "proto3";//正在使用`proto3`语法
+
+package pb;
+
+option go_package ="../pb";// 避免错误 unable to determine Go import path for "myproto.proto"
+
+// 消息体    ---  一个package中不可以定义同名的消息体（如People）
+message Teacher{
+  int32 age = 1;
+  string name = 2;
+}
+
+// 定义服务
+service SayName{
+  rpc SayHello(Teacher) returns (Teacher);
+}
