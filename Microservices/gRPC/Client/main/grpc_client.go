@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "awesomeProject1/Microservices/PB"
+	pb2 "awesomeProject1/Microservices/gRPC/pb"
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
@@ -17,9 +17,9 @@ func main() {
 	defer grpcConn.Close()
 
 	// 2. 初始化 grpc 客户端
-	grpcClient := pb.NewSayNameClient(grpcConn)
+	grpcClient := pb2.NewSayNameClient(grpcConn)
 	// 创建并初始化一个Teacher对象
-	var teacher pb.Teacher
+	var teacher pb2.Teacher
 	teacher.Name = "张三"
 	teacher.Age = 18
 	// 3. 调用远程服务。

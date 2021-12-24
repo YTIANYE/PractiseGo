@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "awesomeProject1/Microservices/PB"
+	pb2 "awesomeProject1/Microservices/gRPC/pb"
 	"context" // 上下文，---goroutine (go程) 之间用来进行数据传递的API包
 	"fmt"
 	"google.golang.org/grpc"
@@ -13,7 +13,7 @@ type Children struct {
 }
 
 // 按照接口绑定类方法
-func (this *Children) SayHello(ctx context.Context, t *pb.Teacher) (*pb.Teacher, error) {
+func (this *Children) SayHello(ctx context.Context, t *pb2.Teacher) (*pb2.Teacher, error) {
 	t.Name += "is Working!"
 	return t, nil
 }
@@ -23,7 +23,7 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	// 2. 注册服务
-	pb.RegisterSayNameServer(grpcServer, new(Children))
+	pb2.RegisterSayNameServer(grpcServer, new(Children))
 	fmt.Println("注册服务成功")
 
 	// 3. 设置监听， 指定 IP、port

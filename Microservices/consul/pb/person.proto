@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package ="../pb";// 避免错误 unable to determine Go import path for "myproto.proto"
+
+message Person{
+  string name = 1;
+  int32 age = 2;
+}
+
+// 添加rpc服务
+service hello{
+  rpc sayHello (Person) returns (Person);
+}
+
