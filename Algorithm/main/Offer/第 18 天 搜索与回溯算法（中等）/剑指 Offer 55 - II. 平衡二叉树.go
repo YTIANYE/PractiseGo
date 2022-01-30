@@ -36,7 +36,7 @@ func depth(root *TreeNode) int{
 
 }
 
-func max(a, b int) int{
+func max1(a, b int) int{
 	if a>b{
 		return a
 	}else{
