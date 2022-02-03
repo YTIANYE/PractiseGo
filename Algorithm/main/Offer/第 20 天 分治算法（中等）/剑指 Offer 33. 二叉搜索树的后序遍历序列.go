@@ -1,1 +1,1 @@
-package 第_20_天_分治算法_中等_
+package main
