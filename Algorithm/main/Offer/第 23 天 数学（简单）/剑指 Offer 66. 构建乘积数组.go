@@ -1,1 +1,1 @@
-package 第_23_天_数学_简单_
+package main
