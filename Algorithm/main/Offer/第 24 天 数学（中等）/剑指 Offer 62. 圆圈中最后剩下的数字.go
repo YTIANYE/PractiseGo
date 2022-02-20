@@ -1,1 +1,2 @@
-package 第_24_天_数学_中等_
+package main
+
