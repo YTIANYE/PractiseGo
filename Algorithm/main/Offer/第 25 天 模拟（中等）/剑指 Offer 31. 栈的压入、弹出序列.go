@@ -1,1 +1,1 @@
-package 第_25_天_模拟_中等_
+package main
