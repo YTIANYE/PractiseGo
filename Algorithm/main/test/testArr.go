@@ -2,48 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
-/*
-测试输入输出
-*/
-func testScan() {
-	var num int
-	fmt.Scan(&num)
-	fmt.Println(num)
-}
-
-/*
-测试无穷
-*/
-func testInf() {
-	// 浮点型
-	fmt.Println(math.Inf(1))
-	fmt.Println(math.Inf(-1))
-	// 无符号整型uint
-	const UINT_MIN uint = 0
-	const UINT_MAX = ^uint(0)
-	fmt.Println(UINT_MIN, UINT_MAX)
-	// 有符号整型int
-	const INT_MAX = int(^uint(0) >> 1)
-	const INT_MIN = ^INT_MAX
-	fmt.Println(INT_MIN, INT_MAX)
-}
-
-/*测试字符的类型*/
-func testchar() {
-	s := "abc"  // int32
-	char := 'a' // int32
-	var cha byte
-	cha = 'b' // uint8
-	for _, ch := range s {
-		fmt.Printf("%T\n", ch) // 单个字符类型 int32
-	}
-	fmt.Printf("%T\n", char)
-	fmt.Printf("%T\n", cha)
-	fmt.Printf("%T\n", byte(char))
-}
 
 /*测试数组复制*/
 func testcopyarr() {
@@ -114,15 +74,7 @@ func testslicenil() {
 	fmt.Println(numsp) // [0xc00000a088 0xc00000a088 0xc00000a088 <nil> 0xc00000a0a0 0xc00000a0a0 0xc00000a0a0]
 }
 
-/*测试map默认value*/
-func testmap() {
-	set := make(map[string]int)
-	s := "abcd"
-	for _, str := range s {
-		set[string(str)] += 1
-	}
-	fmt.Println(set["e"]) // map中找不到时默认返回0
-}
+
 
 func main() {
 	// testcopyarr()
