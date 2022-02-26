@@ -1,1 +1,1 @@
-package 第_30_天_分治算法_困难_
+package main
