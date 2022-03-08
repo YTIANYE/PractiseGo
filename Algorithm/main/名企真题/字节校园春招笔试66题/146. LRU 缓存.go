@@ -107,6 +107,7 @@ func (this *LRUCache) Put(key int, value int) {
 		this.tail.left = remove.left
 		remove.left.right = this.tail
 		// 删除remove
+		// map 中的删除可以用delete(this.nums, key)来实现
 		remove.val = -1
 		remove.left = nil
 		remove.right = nil
