@@ -23,13 +23,7 @@ l1 和 l2 均按 非递减顺序 排列
 */
 
 package main
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+
 import . "awesomeProject1/Algorithm/main/structure/LinkList"
 
 // 我的题解：迭代

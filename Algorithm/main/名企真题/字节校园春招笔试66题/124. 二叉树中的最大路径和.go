@@ -30,6 +30,7 @@ package main
 import (
 	. "awesomeProject1/Algorithm/main/structure/TreeNode"
 	"fmt"
+	"math"
 )
 
 // 我的题解:只能从根到叶子出发
@@ -37,7 +38,7 @@ import (
 执行用时：200 ms, 在所有 Go 提交中击败了7.41%的用户
 内存消耗：7.3 MB, 在所有 Go 提交中击败了91.80%的用户
 */
-func maxPathSum(root *TreeNode) int {
+func maxPathSum1(root *TreeNode) int {
 	return dfsEach(root, -1000)
 }
 
@@ -84,6 +85,30 @@ func max(a int, b int) int {
 		return a
 	}
 	return b
+}
+
+// 我实现的官方题解
+/*
+执行用时：16 ms, 在所有 Go 提交中击败了77.34%的用户
+内存消耗：7.4 MB, 在所有 Go 提交中击败了70.00%的用户
+*/
+
+func maxPathSum(root *TreeNode) int{
+	maxNum := math.MinInt16
+
+	var maxGain func (root *TreeNode) int
+	maxGain = func (root *TreeNode) int{
+		if root == nil{
+			return 0
+		}
+		leftGain := max(0, maxGain(root.Left))
+		rightGain := max(0, maxGain(root.Right))
+		tempGain := leftGain + rightGain + root.Val
+		maxNum = max(maxNum, tempGain)
+		return root.Val + max(leftGain, rightGain)
+	}
+	maxGain(root)
+	return maxNum
 }
 
 func main() {
