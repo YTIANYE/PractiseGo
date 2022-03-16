@@ -16,6 +16,7 @@ func testchar() {
 	fmt.Printf("%T\n", byte(char))
 }
 
+// 测试 copy
 func testCopy(){
 	s := "abc"
 	ss := make([]uint8, len(s)) // 创建副本
@@ -23,7 +24,28 @@ func testCopy(){
 	fmt.Printf(string(ss))
 }
 
+// 测试比较数组大小
+func testComp(){
+	a := "123"
+	b := "1"
+	c := "0"
+	d := "234"
+
+	comp := func(str1, str2 string ) {
+		if str1 > str2{
+			fmt.Println("str1 > str2")
+		}else if str1 < str2 {
+			fmt.Println("str1 < str2")
+		}else{
+			fmt.Println("str1 = str2")
+		}
+	}
+	comp(a,b)
+	comp(a,c)
+	comp(a,d)
+}
+
 func main(){
-	testCopy()
+	testComp()
 }
 
