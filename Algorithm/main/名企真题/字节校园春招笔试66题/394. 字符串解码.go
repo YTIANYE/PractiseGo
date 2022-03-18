@@ -45,13 +45,14 @@ import (
 	"strconv"
 )
 
+
+// 我的题解：辅助栈
 /*
 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
 内存消耗：6 MB, 在所有 Go 提交中击败了8.11%的用户
 */
 
-
-func decodeString(s string) string {
+func decodeString1(s string) string {
 
 	stack := []uint8{}
 	for i := range s{
@@ -87,6 +88,43 @@ func decodeString(s string) string {
 	res := ""
 	for i := range stack{
 		res += string(stack[i])
+	}
+	return res
+}
+
+// 我实现的官方题解：辅助栈
+/*
+执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
+内存消耗：2.2 MB, 在所有 Go 提交中击败了31.47%的用户
+*/
+
+func decodeString(s string ) string{
+	stackMulti := []int{}
+	stackRes := []string{}
+	res := ""
+	multi := 0
+
+	for i := range s{
+		if s[i] == '['{
+			stackMulti = append(stackMulti, multi)
+			stackRes = append(stackRes, res)
+			multi = 0
+			res = ""
+		}else if s[i] == ']'{
+			curMulti := stackMulti[len(stackMulti)-1]
+			lastRes := stackRes[len(stackRes)-1]
+			stackMulti = stackMulti[:len(stackMulti)-1]
+			stackRes = stackRes[:len(stackRes)-1]
+			tempres := res
+			res = lastRes
+			for ;curMulti !=0;curMulti--{
+				res += tempres
+			}
+		}else if s[i] >= '0' && s[i] <= '9'{
+			multi = multi * 10 + int(s[i] - '0')
+		}else{
+			res += string(s[i])
+		}
 	}
 	return res
 }
