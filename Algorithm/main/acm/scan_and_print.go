@@ -44,6 +44,21 @@ func fun2() {
 	}
 }
 
+func fun4() {
+	a:=0
+	b:=0
+	for {
+		_, err := fmt.Scanf("%d%d",&a,&b)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+		} else {
+			fmt.Printf("%d\n",a+b)
+		}
+	}
+}
+
 func fun3() {
 	var t, a, b int
 	fmt.Scan(&t)
@@ -53,3 +68,5 @@ func fun3() {
 		t--
 	}
 }
+
+
