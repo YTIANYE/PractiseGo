@@ -129,12 +129,12 @@ func getKthElement(nums1, nums2 []int, k int) int {
 	return 0
 }
 
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
+// func min(x, y int) int {
+// 	if x < y {
+// 		return x
+// 	}
+// 	return y
+// }
 
 func main() {
 	nums1 := []int{1, 2}
