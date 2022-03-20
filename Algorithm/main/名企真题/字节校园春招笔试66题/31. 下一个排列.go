@@ -62,14 +62,12 @@ import (
 
 func nextPermutation(nums []int) []int {
 	n := len(nums)
-
 	p := n - 1
 	pre := p - 1
 	for pre >= 0 && nums[pre] >= nums[p] {
 		pre--
 		p--
 	}
-
 	if pre >= 0 {
 		q := n - 1
 		for q >= 0 && nums[q] <= nums[pre] {
@@ -78,10 +76,18 @@ func nextPermutation(nums []int) []int {
 		nums[q], nums[pre] = nums[pre], nums[q]
 	}
 	sort.Ints(nums[pre+1:])
-
+	// reverse(nums[pre+1:])
 	fmt.Println("结果是：", nums)
 	return nums
 }
+
+// func reverse(a []int) {
+// 	for i, n := 0, len(a); i < n/2; i++ {
+// 		a[i], a[n-1-i] = a[n-1-i], a[i]
+// 	}
+// }
+
+
 
 func main() {
 	input := bufio.NewScanner(os.Stdin)
