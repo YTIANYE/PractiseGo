@@ -50,7 +50,7 @@ package main
 内存消耗：2.2 MB, 在所有 Go 提交中击败了100.00%的用户
 */
 
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func merge1(nums1 []int, m int, nums2 []int, n int) {
 
 	if n == 0 {
 		return
