@@ -40,6 +40,7 @@ func merge(intervals [][]int) [][]int {
 		return intervals
 	}
 
+	// 切片 按照一定的规则排序
 	sort.Slice(intervals, func(i, j int) bool {
 		return intervals[i][0] < intervals[j][0]
 	})
