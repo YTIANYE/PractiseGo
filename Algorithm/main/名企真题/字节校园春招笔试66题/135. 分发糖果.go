@@ -34,6 +34,12 @@ package main
 
 import "fmt"
 
+// 我的题解：模拟
+/*
+执行用时：12 ms, 在所有 Go 提交中击败了95.38%的用户
+内存消耗：6.1 MB, 在所有 Go 提交中击败了54.62%的用户
+*/
+
 func candy(ratings []int) int {
 
 	n := len(ratings)
@@ -73,12 +79,12 @@ func candy(ratings []int) int {
 	return sum(candies)
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 func sum(nums []int) int {
 	res := 0
@@ -88,7 +94,65 @@ func sum(nums []int) int {
 	return res
 }
 
-func main(){
-	nums := []int{1,0,2}
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+// 官方题解：模拟（空间时间复杂度更小）
+
+func candy1(ratings []int) int {
+	n := len(ratings)
+	ans, inc, dec, pre := 1, 1, 0, 1
+	for i := 1; i < n; i++ {
+		if ratings[i] >= ratings[i-1] {
+			dec = 0
+			if ratings[i] == ratings[i-1] {
+				pre = 1
+			} else {
+				pre++
+			}
+			ans += pre
+			inc = pre
+		} else {
+			dec++
+			if dec == inc {
+				dec++
+			}
+			ans += dec
+			pre = 1
+		}
+	}
+	return ans
+}
+
+// 官方题解：两次遍历
+
+func candy2(ratings []int) (ans int) {
+	n := len(ratings)
+	left := make([]int, n)
+	for i, r := range ratings {
+		if i > 0 && r > ratings[i-1] {
+			left[i] = left[i-1] + 1
+		} else {
+			left[i] = 1
+		}
+	}
+	right := 0
+	for i := n - 1; i >= 0; i-- {
+		if i < n-1 && ratings[i] > ratings[i+1] {
+			right++
+		} else {
+			right = 1
+		}
+		ans += max(left[i], right)
+	}
+	return
+}
+
+func main() {
+	nums := []int{1, 0, 2}
 	fmt.Println(candy(nums))
 }

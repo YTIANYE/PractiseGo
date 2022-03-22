@@ -45,18 +45,19 @@ func merge(intervals [][]int) [][]int {
 		return intervals[i][0] < intervals[j][0]
 	})
 
-	for i := 0; i < len(intervals)-1; i++ {
-		j := i + 1
-		for j < len(intervals) {
-			if intervals[j][0] <= intervals[i][1] {
-				if intervals[j][1] > intervals[i][1] { // 注意右侧是不是第二个范围的数大
-					intervals[i][1] = intervals[j][1]
-				}
-				intervals = append(intervals[:j], intervals[j+1:]...)
-			} else {
-				j++
+	i := 0
+	j := i + 1
+	for j < len(intervals) {
+		if intervals[j][0] <= intervals[i][1] {
+			if intervals[j][1] > intervals[i][1] { // 注意右侧是不是第二个范围的数大
+				intervals[i][1] = intervals[j][1]
 			}
+			intervals = append(intervals[:j], intervals[j+1:]...)
+		} else {
+			i++
+			j++
 		}
 	}
+
 	return intervals
 }
