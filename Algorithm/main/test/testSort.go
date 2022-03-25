@@ -21,7 +21,7 @@ type ByAge []Person
 func (a ByAge) Len() int           { return len(a) }
 func (a ByAge) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ByAge) Less(i, j int) bool { return a[i].Age < a[j].Age }
-func Example() {
+func Example1() {
 	people := []Person{
 		{"Bob", 31},
 		{"John", 42},
@@ -36,6 +36,15 @@ func Example() {
 	// [Michael: 17 Jenny: 26 Bob: 31 John: 42]
 }
 
+func Example2(){
+	people := [][]int{{5,2},{3,6},{9,1},{8,4}}
+	sort.Slice(people, func(i, j int) bool {
+		return people[i][1] < people[j][1]
+	})
+	fmt.Println(people)
+}
+
+
 func main() {
-	Example()
+	Example1()
 }
