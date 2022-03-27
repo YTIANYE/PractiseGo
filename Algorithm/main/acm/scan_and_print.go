@@ -29,6 +29,11 @@ func fun1() {
 	fmt.Println(str)
 	fmt.Println(len(str))
 	fmt.Println(str[1])
+
+	// var s, a, b, c  string
+	// fmt.Scanln(&s, &a, &b, &c)
+	// fmt.Println(s)
+	// fmt.Println(strings.Split(s, " "))
 }
 
 
