@@ -36,6 +36,8 @@
 
 package main
 
+import "fmt"
+
 // 我实现的官方题解：动态规划——数学方法
 /*
 执行用时：16 ms, 在所有 Go 提交中击败了40.26%的用户
@@ -63,4 +65,9 @@ func superEggDrop(k int, n int) int {
 		}
 	}
 	return ans
+}
+
+func main(){
+	k, n := 2,6
+	fmt.Println(superEggDrop(k, n))
 }
