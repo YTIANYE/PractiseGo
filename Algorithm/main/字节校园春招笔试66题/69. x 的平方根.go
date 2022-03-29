@@ -33,7 +33,7 @@ package main
  */
 
 
-func mySqrt(x int) int {
+func mySqrt1(x int) int {
 	res := 0
 	for {
 		if res*res <= x && (res+1)*(res+1) > x {
@@ -44,3 +44,22 @@ func mySqrt(x int) int {
 	}
 	return 0
 }
+
+
+// 官方题解：二分查找
+
+func mySqrt(x int) int {
+	l, r := 0, x
+	ans := -1
+	for l <= r {
+		mid := l + (r - l) / 2
+		if mid * mid <= x {
+			ans = mid
+			l = mid + 1
+		} else {
+			r = mid - 1
+		}
+	}
+	return ans
+}
+

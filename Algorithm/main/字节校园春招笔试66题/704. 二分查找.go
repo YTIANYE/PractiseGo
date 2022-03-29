@@ -28,7 +28,7 @@ package main
 执行用时：36 ms, 在所有 Go 提交中击败了22.07%的用户
 内存消耗：6.6 MB, 在所有 Go 提交中击败了39.48%的用户
 */
-func search(nums []int, target int) int {
+func search1(nums []int, target int) int {
 	res := -1
 
 	var bioserch func(int, int)
