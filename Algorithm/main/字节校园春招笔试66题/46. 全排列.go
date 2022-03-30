@@ -30,14 +30,14 @@ package main
 
 import "fmt"
 
-// 我的题解：暴力法
+// 我的题解：递归
 
 /*
 执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
 内存消耗：2.8 MB, 在所有 Go 提交中击败了9.14%的用户
 */
 
-func permute(nums []int) [][]int {
+func permute1(nums []int) [][]int {
 	res := [][]int{}
 	n := len(nums)
 
@@ -58,6 +58,33 @@ func permute(nums []int) [][]int {
 	dfs([]int{}, nums)
 
 
+	return res
+}
+
+
+// 我实现的官方题解：递归
+/**
+执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
+内存消耗：2.5 MB, 在所有 Go 提交中击败了90.31%的用户
+ */
+func permute(nums []int) [][]int{
+	res := [][]int{}
+	n := len(nums)
+
+	var dfs func(int)
+	dfs = func(first int) {
+		if n == first{
+			temp := make([]int, n)
+			copy(temp, nums)
+			res = append(res, temp)
+		}
+		for i:=first;i<n;i++{
+			nums[i], nums[first] = nums[first], nums[i]
+			dfs(first+1)
+			nums[i], nums[first] = nums[first], nums[i]
+		}
+	}
+	dfs(0)
 	return res
 }
 
