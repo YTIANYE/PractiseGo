@@ -57,7 +57,7 @@ type MyQueue struct {
 	right []int
 }
 
-func Constructor() MyQueue {
+func Constructor1() MyQueue {
 	return MyQueue{0, []int{}, []int{}}
 }
 
