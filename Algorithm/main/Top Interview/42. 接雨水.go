@@ -94,12 +94,12 @@ func trap1(height []int) int {
 	return water
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
+// func min(a, b int) int {
+// 	if a < b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 // 2. 我实现的官方题解：双指针
 
