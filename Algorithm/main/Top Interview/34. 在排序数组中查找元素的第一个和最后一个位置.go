@@ -32,6 +32,8 @@ nums 是一个非递减数组
  */
 package main
 
+import "sort"
+
 // 我的题解：二分查找
 /**
 执行用时：8 ms, 在所有 Go 提交中击败了26.40%的用户
@@ -63,4 +65,14 @@ func searchRange(nums []int, target int) []int {
 	}
 	biaFind(0, n-1)
 	return []int{begin, end }
+}
+
+// 官方题解：调用库函数
+func searchRange1(nums []int, target int) []int {
+	leftmost := sort.SearchInts(nums, target)
+	if leftmost == len(nums) || nums[leftmost] != target {
+		return []int{-1, -1}
+	}
+	rightmost := sort.SearchInts(nums, target + 1) - 1
+	return []int{leftmost, rightmost}
 }

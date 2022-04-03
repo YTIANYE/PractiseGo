@@ -66,7 +66,7 @@ func maxArea1(height []int) int {
 内存消耗：8.5 MB, 在所有 Go 提交中击败了61.85%的用户
 */
 
-func maxArea(height []int) int {
+func maxArea2(height []int) int {
 	n := len(height)
 	if n < 2 {
 		return 0
@@ -95,4 +95,23 @@ func min(a, b int) int {
 		return a
 	}
 	return b
+}
+
+// 我实现的官方题解：双指针
+/*
+执行用时：64 ms, 在所有 Go 提交中击败了93.71%的用户
+内存消耗：8.7 MB, 在所有 Go 提交中击败了25.29%的用户
+*/
+func maxArea(height []int) int {
+	res := 0
+	i, j := 0, len(height)-1
+	for i < j {
+		res = max(res, min(height[i], height[j])*(j-i))
+		if height[i] < height[j] {
+			i++
+		} else {
+			j--
+		}
+	}
+	return res
 }
