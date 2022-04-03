@@ -53,7 +53,7 @@ package main
 执行用时：12 ms, 在所有 Go 提交中击败了66.50%的用户
 内存消耗：6.3 MB, 在所有 Go 提交中击败了35.79%的用户
 */
-func isMatch(s string, p string) bool {
+func isMatch1(s string, p string) bool {
 	m, n := len(s), len(p)
 	dp := [][]bool{} // s[i], p[j]之前是否匹配
 	for i := 0; i <= m; i++ {
