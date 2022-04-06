@@ -10,6 +10,11 @@
 给出全部的目标号，输出每个目标号对应的信息的长度和偏移量（描述的信息开始位置，如AB在第2个字节上）
 如：15 4 2
 
+输入：
+信息段
+几个目标号
+目标号
+
 例子1：
 输入：
 0F04ABABABAB
@@ -27,7 +32,7 @@
 输出：
 4 2
 2 8
- */
+*/
 
 package main
 
@@ -38,8 +43,8 @@ import "fmt"
 func main() {
 	var str string
 	var n int
-	hashTag := make(map[int][]int) // key tag             value lenght offset
-	tags := []int{}
+	hashTag := make(map[int][]int) // key：tag             value：length offset
+	tags := []int{}                // 目标号【为了实现hashTag 的有序输出】
 
 	fmt.Scan(&str)
 	fmt.Scan(&n)
@@ -71,15 +76,15 @@ func main() {
 	}
 	i := 0
 	for i < len(str) {
-		if i+4 >=len(str){
+		if i+4 >= len(str) { // 连目标号和长度都未能满足的残缺字段
 			break
 		}
 
 		tag := toInt(str[i:i+2], hashMap)
 		length := toInt(str[i+2:i+4], hashMap) // value 中的字节数
-		offset := (i+4)/2
-		i += 4 + length*2
-		if i > len(str) { // 不完整
+		offset := (i + 4) / 2                  // str中的两个字符 视为 offset的一个字节
+		i += 4 + length*2                      // 下一字段的开始位置
+		if i > len(str) {                      // 当前字段不完整
 			break
 		}
 		if _, ok := hashTag[tag]; ok {

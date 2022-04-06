@@ -5,7 +5,6 @@ m个面试官n个面试者，每个面试官最多面试x次
 问：能否安排面试，能的话输出面试match数组，不能输出false
 
 
-
 测试样例
 4 6 4
 python c++ java
@@ -18,6 +17,7 @@ go
 c++
 java
 python
+
 */
 
 package main
@@ -60,6 +60,7 @@ func main() {
 		zhe[i] = strs[0]
 		zhex[i] = 2
 	}
+	// 语言种类会的少的排在前面
 	sort.Slice(guanl, func(i, j int) bool {
 		return guanl[i][0] < guanl[j][0]
 	})
@@ -72,14 +73,13 @@ func main() {
 	// fmt.Println(guanl)
 
 	// 计算
-	end := true                    // 可以匹配
+	end := false                   // 不用结束
 	for zheid, lang := range zhe { // 对于每个面试者
-		jieshu := false
-		for zhex[zheid] != 0 {
+		for zhex[zheid] != 0 { // 每个面试者两次面试
 			find := false
 			for _, g := range guanl { // 对于每个面试官
-				guanid := g[1] //
-				if inLang(lang, guan[guanid]) && guanx[guanid] != 0 && match[guanid][zheid] != 1{
+				guanid := g[1]
+				if inLang(lang, guan[guanid]) && guanx[guanid] != 0 && match[guanid][zheid] != 1 {
 					match[guanid][zheid] = 1
 					zhex[zheid]--
 					guanx[guanid]--
@@ -89,21 +89,24 @@ func main() {
 			}
 			// 每个面试官都不能满足了
 			if !find {
-				jieshu = true
+				end = true
 			}
 		}
-		if jieshu {
-			end = false
+
+		// 若当前面试者不能满足，结束面试
+		if end {
 			break
 		}
 	}
-	if !end {
+	// 输出结果
+	if end { // 不能匹配而结束
 		fmt.Println("false")
 		// printmatch(match)
 	} else {
 		printmatch(match)
 	}
 }
+
 // 面试官是否可以面该语言
 func inLang(lang string, langs []string) bool {
 	for _, val := range langs {
