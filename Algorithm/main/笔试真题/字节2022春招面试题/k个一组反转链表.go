@@ -81,7 +81,7 @@ func reverList(head *ListNode, k int) *ListNode {
 func reverse(prehead, end *ListNode) *ListNode {
 	lastone := prehead.next
 	p := prehead.next
-	prehead.next = end // 截断后头插
+	prehead.next = end // 注意： 截断后头插
 	for p != end {
 		q := p
 		p = p.next
