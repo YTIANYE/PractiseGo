@@ -67,14 +67,15 @@ func reverse(preHead, head *ListNode, k int) (*ListNode, *ListNode) {
 		}
 		p = p.Next
 	}
-	preHead.Next = p
+	preHead.Next = p // 截断链表
+	// 头插入过程
 	for q != p {
 		node := q
 		q = q.Next
 		node.Next = preHead.Next
 		preHead.Next = node
 	}
-
+	// 查找 p的前一个结点
 	pre := preHead
 	for i := 0; i < k; i++ {
 		pre = pre.Next
