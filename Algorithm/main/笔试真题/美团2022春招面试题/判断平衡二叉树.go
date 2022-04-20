@@ -10,7 +10,8 @@ func main() {
 	// fmt.Printf("%d\n", a)
 	// fmt.Printf("Hello World!\n")
 
-	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+	// nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+	nums := []int{1, 2, -1, 3, -1, -1, -1, 4, -1}
 	root := TreeCreate(nums, 0)
 	TreePrint(root)
 	fmt.Println()
@@ -29,7 +30,7 @@ func isBalance(root *TreeNode) (bool, int) {
 	balancer, highr := isBalance(root.Right)
 
 	high := max(highl, highr) + 1
-	if balancel && balancer {
+	if balancel && balancer && abs(highl, highr) <=1 {
 		return true, high
 	}
 	return false, high
