@@ -25,7 +25,7 @@
 0 <= strs[i].length <= 100
 strs[i] 仅包含小写字母
 
- */
+*/
 
 package main
 
@@ -33,20 +33,38 @@ import (
 	"sort"
 	"strconv"
 )
+
+// 官方题解：计数+哈希
+func groupAnagrams1(strs []string) [][]string {
+	mp := map[[26]int][]string{}
+	for _, str := range strs {
+		cnt := [26]int{}
+		for _, b := range str {
+			cnt[b-'a']++
+		}
+		mp[cnt] = append(mp[cnt], str)
+	}
+	ans := make([][]string, 0, len(mp))
+	for _, v := range mp {
+		ans = append(ans, v)
+	}
+	return ans
+}
+
 // 我的题解：哈希+排序
 /**
 执行用时：28 ms, 在所有 Go 提交中击败了23.07的用户
 内存消耗：8.6 MB, 在所有 Go 提交中击败了40.07%的用户
- */
+*/
 
 func groupAnagrams(strs []string) [][]string {
 	res := [][]string{}
 	hash := make(map[string][]string)
-	for _, str := range strs{
+	for _, str := range strs {
 		key := getKey(str)
 		hash[key] = append(hash[key], str)
 	}
-	for _, val := range hash{
+	for _, val := range hash {
 		res = append(res, val)
 	}
 	return res
@@ -54,14 +72,14 @@ func groupAnagrams(strs []string) [][]string {
 
 func getKey(str string) string {
 	s := []uint8{}
-	for i := range str{
+	for i := range str {
 		s = append(s, str[i])
 	}
 	sort.Slice(s, func(i, j int) bool {
 		return s[i] < s[j]
 	})
 	key := ""
-	for i:= range s{
+	for i := range s {
 		k := strconv.Itoa(int(s[i]))
 		key += k
 	}
