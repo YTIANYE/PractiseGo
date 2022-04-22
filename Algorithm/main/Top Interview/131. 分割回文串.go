@@ -24,27 +24,55 @@ s 仅由小写英文字母组成
 
 package main
 
-import "strconv"
+import "fmt"
 
+// 官方题解：动态规划+回溯
+/**
+执行用时：208 ms, 在所有 Go 提交中击败了99.91%的用户
+内存消耗：23 MB, 在所有 Go 提交中击败了82.98%的用户
+*/
 func partition(s string) [][]string {
+	// 初始化
+	n := len(s)
 	res := [][]string{}
-	strs := []string{}
-	for i := range s{
-		strs = append(strs, strconv.Itoa(int(s[i])))
+
+	ishuiwen := make([][]bool, n)
+	for i := 0; i < n; i++ {
+		ishuiwen[i] = make([]bool, n)
+		for j := 0; j < n; j++ {
+			ishuiwen[i][j] = true
+		}
 	}
 
-	n := len(strs)
-	res = append(res, strs)
+	// 动态规划
+	for i := n - 1; i >= 0; i-- {
+		for j := i + 1; j < n; j++ {
+			ishuiwen[i][j] = s[i] == s[j] && ishuiwen[i+1][j-1]
+		}
+	}
+
+	// 递归
+	queue := []string{}
+	var dfs func(int)
+	dfs = func(i int) {
+		if i == n {
+			res = append(res, append([]string{}, queue...))
+			return
+		}
+		for j := i; j < n; j++ {
+			if ishuiwen[i][j] {
+				queue = append(queue, s[i:j+1])
+				dfs(j + 1)
+				queue = queue[:len(queue)-1]
+			}
+		}
+	}
+	dfs(0)
 
 	return res
 }
 
-func ishuiwen(s string) bool{
-	n := len(s)
-	for i:=0;i<n;i++{
-		if s[i] != s[n-i-1]{
-			return false
-		}
-	}
-	return true
+func main() {
+	s := "aab"
+	fmt.Println(partition(s))
 }
