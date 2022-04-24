@@ -37,14 +37,14 @@ func salesman( N int ,  h []int ,  a []int ) int64 {
 		dp[i] = int64(a[i])
 		for j:=0;j<i;j++{
 			if h[i] > h[j] {
-				dp[i] = max(dp[i], dp[j] + int64(a[i]))
+				dp[i] = max1(dp[i], dp[j] + int64(a[i]))
 			}
 		}
 	}
 	return dp[N-1]
 }
 
-func max(a, b int64 ) int64 {
+func max1(a, b int64 ) int64 {
 	if a > b {
 		return a
 	}
