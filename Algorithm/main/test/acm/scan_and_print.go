@@ -15,8 +15,8 @@ func main() {
 
 }
 
+// 建议使用
 // 获取 []string
-
 func fun1() {
 	input := bufio.NewScanner(os.Stdin)
 	// for input.Scan() {
@@ -36,7 +36,7 @@ func fun1() {
 	// fmt.Println(strings.Split(s, " "))
 }
 
-
+// 建议使用
 // a + b
 func fun2() {
 	var a, b int
