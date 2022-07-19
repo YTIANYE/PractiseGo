@@ -41,15 +41,15 @@ struct Node {
 
 package main
 
-type Node struct {
+type Node1 struct {
 	Val   int
-	Left  *Node
-	Right *Node
-	Next  *Node
+	Left  *Node1
+	Right *Node1
+	Next  *Node1
 }
 
 // 官方题解：空间复杂度：O(1)O(1)，
-func connect1(root *Node) *Node {
+func connect1(root *Node1) *Node1 {
 	if root == nil {
 		return root
 	}
@@ -79,12 +79,12 @@ func connect1(root *Node) *Node {
 
 */
 
-func connect(root *Node) *Node {
+func connect(root *Node1) *Node1 {
 	if root == nil {
 		return nil
 	}
 
-	queue := []*Node{root}
+	queue := []*Node1{root}
 	for len(queue) != 0 {
 		n := len(queue)
 		for i := 0; i < n-1; i++ {
