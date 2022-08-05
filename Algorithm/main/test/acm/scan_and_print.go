@@ -54,13 +54,17 @@ func fun4() {
 	b:=0
 	for {
 		_, err := fmt.Scanf("%d%d",&a,&b)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-		} else {
-			fmt.Printf("%d\n",a+b)
+		//if err != nil {
+		//	if err == io.EOF {
+		//		break
+		//	}
+		//} else {
+		//	fmt.Printf("%d\n",a+b)
+		//}
+		if err == io.EOF {
+			break
 		}
+		fmt.Printf("%d\n",a+b)
 	}
 }
 
