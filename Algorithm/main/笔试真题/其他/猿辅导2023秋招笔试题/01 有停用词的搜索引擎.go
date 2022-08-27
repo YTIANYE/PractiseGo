@@ -23,9 +23,8 @@ import (
 	"strings"
 )
 
-
 // 我的题解： 50%
-func isRight(s string, ting string) bool {
+func isRight(s string, ting string) bool { // 匹配，返回true
 	if len(s) != len(ting) {
 		return false
 	}
@@ -40,7 +39,7 @@ func isRight(s string, ting string) bool {
 	return true
 }
 
-func fun(s1, s2 string ) {
+func fun(s1, s2 string) {
 	hashWords := make(map[string]int)
 	hashTings := make(map[string]int)
 
@@ -60,6 +59,7 @@ func fun(s1, s2 string ) {
 
 	res := 0
 	for s, num := range hashWords {
+		// 判断是否是停用词
 		tag := false
 		for ting := range hashTings {
 			if isRight(s, ting) {
@@ -70,6 +70,7 @@ func fun(s1, s2 string ) {
 		if tag {
 			continue
 		}
+		//
 		res = max(res, num)
 	}
 	fmt.Println(res)
@@ -82,18 +83,16 @@ func max(a, b int) int {
 	return b
 }
 
-
-
 func main() {
 	var M int
 	fmt.Scan(&M)
 	input := bufio.NewScanner(os.Stdin)
-	var words , tings string
-	for i:=0;i<M*2;i++ {
+	var words, tings string
+	for i := 0; i < M*2; i++ {
 		input.Scan()
-		if i %2 == 0 {
+		if i%2 == 0 {
 			words = input.Text()
-		}else {
+		} else {
 			tings = input.Text()
 			fun(words, tings)
 		}
