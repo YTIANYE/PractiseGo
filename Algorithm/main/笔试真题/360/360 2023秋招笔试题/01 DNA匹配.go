@@ -30,49 +30,49 @@ TTAATT
 1.首先修改第一个位置的核酸（从A修改为T）
 2.交换3和5位置的核酸
 3.交换4和6位置的核酸
- */
+*/
 package main
 
 import "fmt"
 
+// 通过 100%
 func main() {
 	var a, b string
 	res := 0
 	fmt.Scan(&a, &b)
 	//
-	i:=0
-	for i<len(a) {
+	i := 0
+	for i < len(a) {
 		if a[i] == b[i] {
 			a = remove(a, i)
 			b = remove(b, i)
-		}else {
+		} else {
 			i++
 		}
 
 	}
-
 
 	//
 	n := len(a)
 	anumT, bnumT := numT(a), numT(b)
 	budeng := abs(anumT - bnumT)
 	res += budeng
-	res += (n-budeng) / 2
+	res += (n - budeng) / 2
 	fmt.Println(res)
 
 }
 
-func numT ( s string) int {
+func numT(s string) int {
 	res := 0
-	for i:=0;i<len(s);i++ {
+	for i := 0; i < len(s); i++ {
 		if s[i] == 'T' {
-			res ++
+			res++
 		}
 	}
 	return res
 }
 
-func abs( a int) int {
+func abs(a int) int {
 	if a > 0 {
 		return a
 	}
@@ -82,9 +82,9 @@ func abs( a int) int {
 func remove(a string, i int) string {
 	if len(a) == 1 && i == 0 {
 		return ""
-	} else if i ==0 {
+	} else if i == 0 {
 		return a[1:]
-	}else if i == len(a)-1 {
+	} else if i == len(a)-1 {
 		return a[:i]
 	} else {
 		return a[:i] + a[i+1:]

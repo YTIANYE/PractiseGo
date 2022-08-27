@@ -27,26 +27,27 @@
 5
 4
 2
- */
+*/
 
 package main
 
 import "fmt"
 
+// 通过 100%
 func main() {
 	var T int
 	fmt.Scan(&T)
-	for ;T!=0;T-- {
-		var a, b, c,d int
-		fmt.Scan(&a, &b,&c,&d)
+	for ; T != 0; T-- {
+		var a, b, c, d int
+		fmt.Scan(&a, &b, &c, &d)
 		res := 0
 		res += d + b/2 + min(a, c)
 		numb := b % 2
-		if min(a, c) == c {  // a有剩余
+		if min(a, c) == c { // a有剩余
 			numa := a - c
 			if numb == 1 && numa >= 2 {
-				res += 1 + (numa-2) / 4
-			}else {
+				res += 1 + (numa-2)/4
+			} else {
 				res += numa / 4
 			}
 		}
