@@ -40,6 +40,7 @@ package main
 
 import "fmt"
 
+// 100%
 func main() {
 	var n, m int
 	fmt.Scan(&n, &m)
