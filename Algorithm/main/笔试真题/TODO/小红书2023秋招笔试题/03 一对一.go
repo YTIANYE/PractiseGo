@@ -30,7 +30,7 @@
 如样例中，一共有6个新员工，朋友关系有以下五个(1,2),(2,3),(2,4),(3,5),(3,6)。
 
 可以证明无论如何匹配这6个人， 最多只能有两对是互为朋友的，因此输出2。
- */
+*/
 package main
 
 import (
@@ -86,7 +86,7 @@ func max(a, b int) int {
 }
 
 // 由一个点开始
-func start(x int , guanxi [][]int) int {
+func start(x int, guanxi [][]int) int {
 	var gx [][]int
 	copy(gx, guanxi)
 	queue := qingchu(x, gx)
@@ -96,11 +96,11 @@ func start(x int , guanxi [][]int) int {
 		var newgx [][]int
 		copy(newgx, gx)
 		qingchu(y, newgx)
-		for j := range newq{
+		for j := range newq {
 			start(newq[j], newgx)
 		}
 	}
-
+	return -1
 
 }
 
@@ -109,9 +109,9 @@ func newqueue(i int, queue []int) []int {
 	newq := []int{}
 	if i == 0 {
 		newq = append(newq, queue[1:]...)
-	}else if i == len(queue)-1 {
+	} else if i == len(queue)-1 {
 		newq = append(newq, queue[:len(queue)-1]...)
-	}else {
+	} else {
 		newq = append(queue[:i], queue[i+1:]...)
 	}
 	return newq
