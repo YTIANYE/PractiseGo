@@ -1,12 +1,12 @@
 package main
 
-type Node struct {
+type Node1 struct {
 	 Val int
-	 Next *Node
+	 Next *Node1
 }
 
-func remove(head *Node, n int) *Node {
-	pHead := &Node{0, head }
+func remove(head *Node1, n int) *Node1 {
+	pHead := &Node1{0, head }
 	pre := pHead
 	p := pre.Next
 	i := 0

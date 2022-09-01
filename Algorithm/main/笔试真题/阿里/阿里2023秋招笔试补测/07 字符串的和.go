@@ -44,5 +44,6 @@ func he(num1, num2 string) string {
 }
 
 func main() {
-	fmt.Println(he("111", "999"))
+	a, b := "11", "989"
+	fmt.Println(he(a,b))
 }
