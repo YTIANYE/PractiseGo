@@ -4,7 +4,6 @@ import (
 	"fmt"
 )
 
-
 /*测试数组复制*/
 func testcopyarr() {
 	// 1 数组复制是值复制
@@ -74,9 +73,14 @@ func testslicenil() {
 	fmt.Println(numsp) // [0xc00000a088 0xc00000a088 0xc00000a088 <nil> 0xc00000a0a0 0xc00000a0a0 0xc00000a0a0]
 }
 
-
+/*测试取切片*/
+func testSlice() {
+	nums := []int{1, 2, 3}
+	fmt.Println(nums[:0]) // []
+	fmt.Println(nums[3:]) // []
+	// fmt.Println(nums[4:]) // panic
+}
 
 func main() {
-	// testcopyarr()
-	testHeadInsert()
+	testSlice()
 }
