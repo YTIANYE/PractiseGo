@@ -35,6 +35,10 @@ package main
 
 import "math"
 
+/**
+执行用时：28 ms, 在所有 Go 提交中击败了86.16%的用户
+内存消耗：9.4 MB, 在所有 Go 提交中击败了19.42%的用户
+ */
 // 官方题解：BFS + 虚拟节点 优化建图
 func ladderLength(beginWord string, endWord string, wordList []string) int {
 	wordId := map[string]int{}
